@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type=text/javascript src="js/jquery.js"></script>
+        <script type=text/javascript charset=utf-8 src="js/lrscroll.js"></script>
+        <script type=text/javascript src="js/jquery.lazyload.js"></script>
+        <meta charset="utf-8">
+        <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }    
+        .main{
+            
+            border: 1px solid #000;
+            height: 780px;
+            width: 1200px;
+            margin: 0px auto;
+        }   
+        .header{
+            border: 1px solid #000;
+            width: 1200px;
+            height: 100px;
+            margin: 0px auto;   
+            position: relative;
+			background:url(images/biaoti.jpg);
+        }
+        .banner{
+            border: 1px solid #000;
+            width: 1200px;
+            height: 40px;
+            margin: 0px auto;
+            margin-bottom: 10px;
+            background-color: crimson;
+            position: relative;
+			z-index:9999;
+        }
+        .article{
+            border: 1px solid #000;
+            width: 1200px;
+            height: 400px;
+            margin: 0px auto;
+            position: relative;
+        }
+        .left{
+            float: left;
+            width: 240px;
+            height: 400px;
+            border: 1px solid #000;
+            margin-right: 30px;
+        }
+        .right{
+            float: right;
+            width: 240px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        .middle{
+            border: 1px solid #000;
+            width: 660px;
+            height: 400px;
+            float: left;
+			
+        }
+
+        .picture{
+            width: 1200px;
+            height: 150px;
+            border: 1px solid #000;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+        .footer{
+            width: 1200px;
+            height: 50px;
+            margin: 0px auto;
+            border: 1px solid #000;
+        }
+        .banner .ul1 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            list-style-type: none;
+        }
+        .banner  .ul1 li{
+            float: left;
+            width: 100px;
+            text-align: center;
+            padding: 10px 40px;
+        }
+		.banner .li1:hover{
+            background-color: brown;
+        }
+		.banner .ul1 .ul2 li:hover{
+            background-color: brown;
+        }
+        .banner .ul1 li a{
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Microsoft YaHei';
+        }
+		.banner .ul2 li a{
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Microsoft YaHei';
+        }
+		.banner .ul2 li{           
+			background-color:#F00;
+			padding: 10px 40px;
+			
+        }
+        .banner .ul2 {
+            display:none;
+			margin-left:-40px;
+			margin-top:10px;
+			list-style-type: none;
+			
+        }
+		.banner .ul1 li:hover .ul2{
+			display:block;
+		}
+		
+        .logo_left{
+            position: absolute;
+            left: 1120px;
+            top: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Microsoft YaHei';
+            text-indent: 19px;
+			background:url(images/ico.jpg) left center no-repeat;
+            width: 80px;
+        }
+		.logo_left:hover{
+            color: brown;
+        }
+        .left ul{
+            position: absolute;
+            width: 200px;
+            top: 4px;
+            left: 30px;
+            list-style-type: none;
+        }
+        .left ul li{
+            text-align: center;
+            padding: 10px 10px;
+        }
+        .left ul li a{
+            text-decoration: none;
+            color: crimson;
+            font-weight: bold;
+            font-size: 15px;
+            font-family: 'Microsoft YaHei';
+        }
+        .left ul li p{
+            font-size: 10px;
+        }
+        .left ul li a:hover{
+            color: brown;
+        }
+        .right ul{
+            position: absolute;
+            list-style-type: none;
+            top: 20px;
+            width: 220px;
+            left: 10px;
+        }
+        .right ul li{
+            padding-bottom: 20px;
+        }
+        .right ul li h2{
+            color: crimson;
+            font-weight: bold;
+            font-family: 'Microsoft YaHei';
+            font-size: 20px;
+            text-align: center;
+        }
+        .right ul li a{
+            font-size: 16px;
+            text-decoration: none;
+            color: dimgray;
+            font-weight: 600;
+        }
+        .right ul li a:hover{
+            color: crimson;
+        }
+        .middle img{
+            width: 640px;
+            height: 380px;
+            margin-left: 10px;
+            margin-top: 10px;
+			
+        }
+        .middle h4{
+            margin-left: 20px;
+            margin-top: -20px;
+            color: black;
+            font-weight: lighter;
+        }
+        .footer{
+            background-color: crimson;
+            
+        }
+        .footer p{
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .header .search{
+            width:236px;
+            height:30px;
+            font-size: 12px;
+            color: darkgrey;
+/*
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            appearance:none;
+*/
+            margin-left: 900px;
+            margin-top: 60px;
+            position: relative;
+        }
+        .header .search:hover{
+           border:1px solid #000;
+        }
+        .sousuo{
+            background-color: darkgrey;
+            color: #FFF;
+            width: 60px;
+            height: 30px;
+            font-size: 10px;
+            border-style: solid;
+            border-color: darkgrey;
+            position: absolute;
+            top: 60px;
+			left: 1136px;
+        }
+        
+        
+        
+        
+        * a {position: relative}
+
+		#featureContainer {
+			border-bottom: #999 0px dotted;
+			border-left: #999 0px dotted; 
+			margin: -10px auto;
+			width: 923px; 
+			height:200px;
+			font-size: 80%;
+			border-top: #999 0px dotted;
+			border-right: #999 0px dotted;
+		}
+		
+		#feature {
+			border-bottom: #999 0px dotted;
+			position: relative;
+			border-left: #999 0px dotted; 
+			margin-TOP: 5px;
+			margin-bottom: 10px;
+			border-top: #999 0px dotted; 
+			border-right: #999 0px dotted
+		}
+		
+		#feature .prev {
+			border-bottom: #999 0px dotted;
+			border-left: #999 0px dotted;
+			text-indent: -9999px;
+			width: 30px; 
+			display: block; 
+			background: url(images/feature_left.gif) center top;
+			float: left;
+			height: 48px; 
+			border-top: #999 0px dotted;
+			TOP: -125px; 
+			border-right: #999 0px dotted;
+			left:-70px;
+		}
+		#feature .next {
+			border-bottom: #999 0px dotted;
+			border-left: #999 0px dotted;
+			text-indent: -9999px; 
+			width: 30px; 
+			display: block;
+			left:75px;
+			background:url(images/feature_right.gif) center top ;
+			float: right;
+			height: 48px;
+			border-top: #999 0px dotted;
+			TOP: -125px;
+			border-right: #999 0px dotted
+		}
+		#feature .prev:hover {
+			background-position: center bottom
+		}
+		#feature .next:hover {
+			background-position: center bottom
+		}
+		.featureUL {
+			border-bottom: #000 0px dotted;
+			position: relative;
+			border-left: #000 0px dotted;
+			padding-bottom: 0px;
+			list-style-type: none;
+			margin: 0px;
+			padding-left: 0px;
+			width: 2800px;
+			padding-right: 0px;
+			float: left;
+			border-top: #000 0px dotted;
+			border-right: #000 0px dotted;
+			padding-top: 0px;
+			LEFT: 0px
+		}
+		.featureBox {
+			background-image: url(../images/bg-featurebox.jpg);
+			border-bottom: #999 0px dotted;
+			border-left: #999 0px dotted;
+			width: 260px;
+			background-REPEaT: no-repeat;
+			float: left;
+			height: 230px;
+			overflow: hidden;
+			border-top: #999 0px dotted;
+			border-right: #999 0px dotted;
+			padding-top: 10px
+		}
+		#botton-scroll {
+			Z-INDEX: 0;
+			border-bottom: #999 0px dotted;
+			border-left: #999 0px dotted;
+			margin: 0px auto;
+			width: 840px;
+			float: left;
+			height: 150px;
+			border-top: #999 0px dotted;
+			border-right: #999 0px dotted
+		}
+		#block {
+			Z-INDEX: 0;
+			border-bottom: #999 0px dotted;
+			position: relative;
+			border-left: #999 0px dotted;
+			padding-bottom: 20px;
+			margin: 0px auto;
+			margin-left:-40px;
+			padding-left: 0px;
+			width: 1000px;
+			padding-right: 0px;
+			height: 160px;
+			font-size: 70%;
+			overflow: hidden;
+			border-top: #999 0px dotted;
+			border-right: #999 0px dotted;
+			padding-top: 0px
+		}
+		#block .box {
+			border-bottom: #d8d8d8 0px solid;
+			border-left: #d8d8d8 0px solid;
+			padding-bottom: 10px;
+			margin: 0px 10px;
+			padding-left: 5px;
+			width:200px;
+			height:140px;
+			padding-right: 5px;
+			float: left;
+			border-top: #d8d8d8 0px solid;
+			border-right: #d8d8d8 0px solid;
+			padding-top: 10px
+		}
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </style>
+    </head>
+    <body>
+    <div class="main">
+        <div class="header">
+            <input type="search" class="search">
+            <input type="button" class="sousuo" value="搜索">       
+        </div>
+        <div class="banner">
+            <nav role="navigation">
+                <ul class="ul1">
+                    <li class="li1"><a href="#" target="_blank">首页</a></li>
+                    <li  class="li1"><a href="#" target="_blank">健康</a>
+                    <ul class="ul2">
+                        	<li><a href="#" target="_blank">haha</a></li>
+                            <li><a href="#" target="_blank">haha1</a></li>
+                            <li><a href="#" target="_blank">haha2</a></li>
+                            <li><a href="#" target="_blank">haha3</a></li>
+                        </ul>
+                    
+                    
+                    </li>
+                    <li class="li1"><a href="#" target="_blank">话题</a></li>
+                    <li class="li1"><a href="#" target="_blank">活动</a></li>                    
+                </ul>                
+           </nav>            
+           <a class="logo_left" href="">登录</a>
+        </div>
+        <div class="article">
+            <div class="left">
+                <nav role="navigation">
+                <ul>
+                    <li><a href="#" target="_blank">万万没想到内蒙古的牛肉干这么好吃</a><p>内蒙古牛肉干，晒后干干的，很有口感，吃起来让你回味无穷....</p></li>
+                    <li><a href="#" target="_blank">陕西凉皮</a><p>陕西凉皮，冰冰凉凉，很是爽口，价钱公道，超值....</p></li>
+                    <li><a href="#" target="_blank">鞍山杂贝的味道</a><p>内蒙古牛肉干，晒后干干的，很有口感，吃起来让你回味无穷....</p></li>
+                    <li><a href="#" target="_blank">爬蚱新吃法</a><p>内蒙古牛肉干，晒后干干的，很有口感，吃起来让你回味无穷....</p></li> 
+                    <li><a href="#" target="_blank">爬蚱新吃法</a><p>内蒙古牛肉干，晒后干干的，很有口感，吃起来让你回味无穷....</p></li> 
+                </ul>                
+           </nav>
+            </div>
+            <div class="right">
+<!--
+                <h2>今日推荐</h2>
+                <p>炎炎夏日，吃什么最为清爽呢，今天为你推荐<a>山西凉皮</a>，草莓冰激凌，再配上<a>抹茶蛋糕</a>，让你舒舒服服过好这一天，晚上再来上几瓣西瓜，美好的一天结束了哦！</p>                
+-->
+                <nav role="navigation">
+                <ul>
+                    <li><h2>今日推荐</h2></li>
+                    <li><p>炎炎夏日，吃什么最为清爽呢，今天为你推荐<a href="#" target="_blank">山西凉皮</a>，草莓冰激凌，再配上
+                        <a href="#" target="_blank">抹茶蛋糕</a>,让你舒舒服服过好这一天，晚上再来上几瓣西瓜，美好的一天结束了哦！
+                        今天是个好天气，处处好风光，<a href="#" target="_blank">内蒙古羊肉串</a>，<a href="#" target="_blank">
+                        鞍山馅饼</a>，好吃好吃，真好吃！炎炎夏日，吃什么最为清爽呢，今天为你推荐<a href="#" target="_blank">山西凉皮</a>，
+                        草莓冰激凌，再配上<a href="#" target="_blank">抹茶蛋糕</a>,让你舒舒服服过好这一天，晚上再来上几瓣西瓜，美好的一天结束了哦！
+                        今天是个好天气，处处好风光，<a href="#" target="_blank">内蒙古羊肉串</a>，<a href="#" target="_blank">
+                        鞍山馅饼</a>，好吃好吃，真好吃！</p> </li>                    
+                </ul>                
+           </nav> 
+            </div>
+            <div class="middle">
+                <img src="images/map4.jpg" usemap="#map6">
+                <map name="map6">
+                  <area shape="poly" coords="536,113,524,114,510,122,500,127,504,136,522,129,534,130,532,139,530,140,530,147,543,142,555,136,566,129,560,119,552,109,545,107" href="liaoning.html" target="_self">
+                  <area shape="poly" coords="492,21,491,34,480,40,467,42,459,53,468,63,478,58,493,66,503,71,494,73,486,73,480,75,474,75,458,86,440,90,437,98,423,98,416,96,415,106,397,118,378,120,353,120,338,125,322,121,299,115,287,111,277,110,266,109,270,115,278,123,279,127,292,125,294,130,293,134,293,141,299,148,309,154,328,149,333,154,332,162,342,163,359,152,366,154,368,167,379,167,401,151,423,147,444,140,445,126,455,126,473,118,482,117,494,124,503,116,513,116,522,112,535,106,533,98,527,93,517,82,519,72,524,71,524,60,530,50,539,47,543,38,543,27,539,21,516,20,511,10,500,7,495,8" href="neimenggu.html" target="_self">
+                  <area shape="poly" coords="371,169,368,178,379,186,380,198,369,201,362,201,372,196,361,204,361,209,351,218,363,221,371,226,382,226,388,221,396,213,397,202,402,198,411,198,419,196,414,183,408,175,403,169,403,161,399,157" href="shanxi.html" target="_self">
+                  <area shape="poly" coords="444,188,436,199,423,199,413,205,407,205,409,212,411,221,419,222,432,227,443,227,445,236,453,234,463,234,456,220,456,215,467,213,467,208,452,193,455,189,449,189" href="henan.html" target="_self">
+                </map>
+                <h4>想去哪吃, 就点哪儿!</h4>
+          </div>          
+        </div>
+        <div class="picture">
+            
+            
+            
+            
+            <div id=featureContainer>
+        <div id=feature>
+        <div id=block>
+        <div id=botton-scroll>
+        <ul class=featureul>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt=Paracletos src="images/6.jpg" width=200 height=120>
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="Natural Touch Soap" src="images/5.jpg" width=200  height=120>
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="LRTK" src="images/4.jpg" width=200 height=120>
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="Natalie Reid" src="images/3.jpg" width=200 height=120> 
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="xixi" src="images/2.jpg" width=200 height=120> 
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="xixi" src="images/2.jpg" width=200 height=120> 
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="xixi" src="images/2.jpg" width=200 height=120> 
+          </a>
+          </div>
+          <!-- /box -->
+          </li>
+          <li class=featureBox>
+          <div class=box>
+          <a href="http://www.16sucai.com/" target="_blank"><IMG alt="Catherine Sherwood" src="images/1.jpg" width=200 height=120>  </a>
+          </div>
+          <!-- /box -->
+          </li>
+          </ul>
+          </div><!-- /botton-scroll -->
+          </div><!-- /block -->
+          <a class=prev >Previous</a>
+          <a class=next >Next</a> 
+          </div>
+        <!-- /feature -->
+          </div><!-- /featureContainer -->
+          
+          </div><!-- /featured -->
+          </div><!-- /body -->
+          </div><!-- /wrapper -->
+          </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+        <div class="footer">
+            <p>版权所有ⓒzhaomingming</p>
+        </div>        
+    </div>
+    
+    </body>
+
+
+</html>
